@@ -8,18 +8,6 @@ x-logging: &default-logging
     tag: "{{.Name}}"
 
 services:
-  nginx-app:
-    container_name: nginx-app
-    image: nginx
-    labels:
-      logging: "promtail"
-      logging_jobname: "containerlogs"
-    ports:
-      - 8080:80
-    networks:
-      - app
-    logging: *default-logging
-
   grafana:
     image: grafana/grafana:11.0.0
     container_name: grafana
