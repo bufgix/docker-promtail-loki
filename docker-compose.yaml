@@ -12,11 +12,12 @@ services:
     image: grafana/grafana:11.0.0
     container_name: grafana
     ports:
-      - 5000:3000
+      - 8000:8000
     volumes:
       - ./config/grafana/datasources/grafana.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
       - ./config/grafana/plugins/app.yaml:/etc/grafana/provisioning/plugins/app.yaml
     environment:
+      - GF_SERVER_HTTP_PORT=8000
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_AUTH_DISABLE_LOGIN_FORM=true
