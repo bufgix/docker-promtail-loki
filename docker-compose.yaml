@@ -1,7 +1,6 @@
-version: '3.8'
+version: "3.8"
 
-x-logging:
-  &default-logging
+x-logging: &default-logging
   driver: "json-file"
   options:
     max-size: "1m"
@@ -25,7 +24,7 @@ services:
     image: grafana/grafana:11.0.0
     container_name: grafana
     ports:
-      - 3000:3000
+      - 5000:3000
     volumes:
       - ./config/grafana/datasources/grafana.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
       - ./config/grafana/plugins/app.yaml:/etc/grafana/provisioning/plugins/app.yaml
@@ -52,7 +51,7 @@ services:
     logging: *default-logging
 
   promtail:
-    image:  grafana/promtail:3.0.0
+    image: grafana/promtail:3.0.0
     container_name: promtail
     volumes:
       - ./config/promtail/promtail.yaml:/etc/promtail/docker-config.yaml
